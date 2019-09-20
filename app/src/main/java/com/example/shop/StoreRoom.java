@@ -1,5 +1,7 @@
 package com.example.shop;
 
+import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.shop.database.AppDatabase;
+import com.example.shop.model.Goods;
 
 public class StoreRoom extends AppCompatActivity {
 
@@ -74,5 +79,14 @@ public class StoreRoom extends AppCompatActivity {
         totalPrice = findViewById(R.id.txt_view_total_price);
     }
 
-
+    public void buttonRecord(View view) {
+        final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "production")
+                .allowMainThreadQueries()
+                .build();
+        Goods goods = new Goods(name.getText().toString(),
+                Long.valueOf(number.getText().toString()),
+                Long.valueOf(price.getText().toString()));
+        db.goodsDao().insertAll(goods);
+        startActivity(new Intent(this , MainActivity.class));
+    }
 }
