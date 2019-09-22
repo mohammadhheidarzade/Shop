@@ -7,86 +7,78 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.shop.database.AppDatabase;
 import com.example.shop.model.Goods;
+import com.example.shop.model.Unit;
 
 public class StoreRoom extends AppCompatActivity {
 
-    TextInputEditText name, number, price;
+    TextInputEditText name, price;
 
-    TextView totalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_room);
         init();
-        setToatalPirce();
     }
 
-    private void setToatalPirce() {
-        number.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (number.getText().toString().equals("") ||
-                        price.getText().toString().equals(""))
-                    return;
-                long num = Long.valueOf(number.getText().toString());
-                long pri = Long.valueOf(price.getText().toString());
-                totalPrice.setText(String.valueOf(num * pri));
-            }
-        });
-        price.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (number.getText().toString().equals("") ||
-                        price.getText().toString().equals(""))
-                    return;
-                long num = Long.valueOf(number.getText().toString());
-                long pri = Long.valueOf(price.getText().toString());
-                totalPrice.setText(String.valueOf(num * pri));
-            }
-        });
-    }
 
     private void init() {
         name = findViewById(R.id.txt_name);
-        number = findViewById(R.id.txt_number);
         price = findViewById(R.id.txt_price);
-        totalPrice = findViewById(R.id.txt_view_total_price);
     }
+
+    String unit = "";
 
     public void buttonRecord(View view) {
         final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "production")
                 .allowMainThreadQueries()
                 .build();
+        if (unit.equals("") || name.getText().toString().equals("") || price.getText().toString().equals(""))
+            return;
         Goods goods = new Goods(name.getText().toString(),
-                Long.valueOf(number.getText().toString()),
+                unit,
                 Long.valueOf(price.getText().toString()));
         db.goodsDao().insertAll(goods);
-        startActivity(new Intent(this , MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.unit, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.tedad:
+                unit = "تعداد";
+                return true;
+            case R.id.baste:
+                unit = "بسته";
+                return true;
+            case R.id.kilo:
+                unit = "کیلو";
+                return true;
+            case R.id.karton:
+                unit = "کارتون";
+                return true;
+            case R.id.tory :
+                unit = "توری";
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }

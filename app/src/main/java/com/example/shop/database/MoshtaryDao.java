@@ -9,12 +9,12 @@ import com.example.shop.model.Goods;
 import java.util.List;
 
 @Dao
-public interface GoodsDao {
+public interface MoshtaryDao {
 
-    @Query("SELECT * FROM goods")
-    List<Goods> getAllGoods();
+    @Query("SELECT * FROM moshtary")
+    List<Goods> getAllMoshtary();
 
     @Insert
-    void insertAll(Goods... goods);
+    void insertAll(Goods... moshtary);
 
 }

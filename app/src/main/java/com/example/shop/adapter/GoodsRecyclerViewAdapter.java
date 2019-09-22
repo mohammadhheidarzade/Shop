@@ -30,7 +30,7 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.name.setText(goods.get(i).getName());
-        viewHolder.number.setText(String.valueOf(goods.get(i).getNumber()));
+        viewHolder.number.setText(String.valueOf(goods.get(i).getUnit()));
         viewHolder.price.setText(String.valueOf(goods.get(i).getPrice()));
     }
 

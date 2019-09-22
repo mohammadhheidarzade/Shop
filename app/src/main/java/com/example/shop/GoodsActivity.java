@@ -27,7 +27,7 @@ public class GoodsActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        List<Goods> goods = db.goodsDao().getAllUsers();
+        List<Goods> goods = db.goodsDao().getAllGoods();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new GoodsRecyclerViewAdapter(goods);

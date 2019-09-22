@@ -5,8 +5,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "goods")
-public class Goods {
+@Entity(tableName = "moshtary")
+public class Moshtary {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -15,16 +15,11 @@ public class Goods {
     private String name;
 
     @ColumnInfo
-    private long price;
+    private String code;
 
-    @ColumnInfo
-    private String unit;
-
-
-    public Goods(String name, String unit, long price) {
+    public Moshtary(String name, String code) {
         this.name = name;
-        this.unit = unit;
-        this.price = price;
+        this.code = code;
     }
 
     public int getId() {
@@ -42,19 +37,12 @@ public class Goods {
     public void setName(String name) {
         this.name = name;
     }
-    public String getUnit() {
-        return unit;
+
+    public String getCode() {
+        return code;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

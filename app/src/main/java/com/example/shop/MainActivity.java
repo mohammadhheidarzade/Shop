@@ -14,10 +14,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonStoreroom(View view) {
-        startActivity(new Intent(this, StoreRoom.class));
+
     }
 
     public void buttonGoods(View view) {
         startActivity(new Intent(this, GoodsActivity.class));
+    }
+
+    public void buttonEmkanat(View view) {
+        startActivity(new Intent(this , Emkanat.class));
     }
 }

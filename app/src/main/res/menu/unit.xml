@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tedad"
+        android:title="تعداد" />
+    <item
+        android:id="@+id/kilo"
+        android:title="کیلو" />
+    <item
+        android:id="@+id/karton"
+        android:title="کارتون" />
+    <item
+        android:id="@+id/baste"
+        android:title="بسته" />
+    <item
+        android:id="@+id/tory"
+        android:title="توری" />
+</menu>
