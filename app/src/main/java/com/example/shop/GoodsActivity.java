@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.shop.adapter.GoodsRecyclerViewAdapter;
 import com.example.shop.database.AppDatabase;
 import com.example.shop.model.Goods;
+import com.example.shop.model.Moshtary;
 
 import java.util.List;
 
@@ -27,10 +28,10 @@ public class GoodsActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        List<Goods> goods = db.goodsDao().getAllGoods();
+        List<Moshtary> moshtaries = db.moshtaryDao().getAllMoshtary();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new GoodsRecyclerViewAdapter(goods);
+        adapter = new GoodsRecyclerViewAdapter(moshtaries);
         recyclerView.setAdapter(adapter);
     }
 

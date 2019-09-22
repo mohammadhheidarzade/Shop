@@ -9,15 +9,16 @@ import android.widget.TextView;
 
 import com.example.shop.R;
 import com.example.shop.model.Goods;
+import com.example.shop.model.Moshtary;
 
 import java.util.List;
 
 public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecyclerViewAdapter.ViewHolder> {
 
-    private List<Goods> goods;
+    private List<Moshtary> moshtaries;
 
-    public GoodsRecyclerViewAdapter(List<Goods> goods) {
-        this.goods = goods;
+    public GoodsRecyclerViewAdapter(List<Moshtary> moshtaries) {
+        this.moshtaries = moshtaries;
     }
 
     @NonNull
@@ -29,14 +30,14 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.name.setText(goods.get(i).getName());
-        viewHolder.number.setText(String.valueOf(goods.get(i).getUnit()));
-        viewHolder.price.setText(String.valueOf(goods.get(i).getPrice()));
+        viewHolder.name.setText(moshtaries.get(i).getName());
+        viewHolder.number.setText(String.valueOf(moshtaries.get(i).getName()));
+        viewHolder.price.setText(String.valueOf(moshtaries.get(i).getCode()));
     }
 
     @Override
     public int getItemCount() {
-        return goods.size();
+        return moshtaries.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

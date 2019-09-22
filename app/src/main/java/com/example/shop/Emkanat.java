@@ -17,4 +17,8 @@ public class Emkanat extends AppCompatActivity {
     public void btnKalaInformation(View view) {
        startActivity(new Intent(this , StoreRoom.class));
     }
+
+    public void btnMoshtaryInformation(View view) {
+        startActivity(new Intent(this , MoshtaryActivity.class));
+    }
 }

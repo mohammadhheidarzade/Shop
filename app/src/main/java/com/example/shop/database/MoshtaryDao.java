@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
 import com.example.shop.model.Goods;
+import com.example.shop.model.Moshtary;
 
 import java.util.List;
 
@@ -12,9 +13,9 @@ import java.util.List;
 public interface MoshtaryDao {
 
     @Query("SELECT * FROM moshtary")
-    List<Goods> getAllMoshtary();
+    List<Moshtary> getAllMoshtary();
 
     @Insert
-    void insertAll(Goods... moshtary);
+    void insertAll(Moshtary... moshtary);
 
 }
